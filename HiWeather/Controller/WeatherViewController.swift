@@ -11,17 +11,30 @@ class WeatherViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    var weatherManager = WeatherManager()
+    var weatherModel = WeatherModel() // 여기에 받아온 데이터를 저장해서 tableViewCell에 적용해주자.
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        weatherManager.delegate = self //순서 주의할 것 delegate 를 먼저 선언해줘야한다. !!!!!
+        weatherManager.fetchWeather(lat: 37.57, lon: 126.98)
+        
+        setUpTableView()
+        
+    }
+    
+    func setUpTableView() {
         self.tableView.backgroundColor = UIColor(named: "blueBackground")
         
-        tableView.dataSource = self
         tableView.delegate = self
+        tableView.dataSource = self
         
+        //Cell Register
         tableView.register(UINib(nibName: Constants.searchCellNibName, bundle: nil), forCellReuseIdentifier: Constants.searchCellIdentifier)
         tableView.register(UINib(nibName: Constants.currentCellNibName, bundle: nil), forCellReuseIdentifier: Constants.currentCellIdentifier)
         tableView.register(UINib(nibName: Constants.hourlyTableViewCellNibName, bundle: nil), forCellReuseIdentifier: Constants.hourlyTableViewCellIdentifier)
+        
     }
 }
 
@@ -63,6 +76,7 @@ extension WeatherViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.currentCellIdentifier, for: indexPath) as! currentWeatherCell
+            cell.cityNameLabel.text = weatherModel.cityName
             return cell
         } else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.hourlyTableViewCellIdentifier, for: indexPath) as! hourlyTableViewCell
@@ -82,4 +96,19 @@ extension WeatherViewController: UITableViewDataSource, UITableViewDelegate {
         }
         return CGFloat()
     }
+}
+
+extension WeatherViewController: WeatherManagerDelegate {
+    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
+        self.weatherModel = weather
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error)
+    }
+    
+    
 }

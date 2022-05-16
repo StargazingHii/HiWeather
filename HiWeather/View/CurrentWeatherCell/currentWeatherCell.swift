@@ -23,6 +23,7 @@ class currentWeatherCell: UITableViewCell {
     
     @IBOutlet weak var currentWeatherLabel: UILabel!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -36,3 +37,5 @@ class currentWeatherCell: UITableViewCell {
     }
     
 }
+    
+

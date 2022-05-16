@@ -13,11 +13,13 @@ class hourlyTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
         
         self.backgroundColor = .clear
-        
+        setUpHourlyCollectionView()
+    }
+    
+    func setUpHourlyCollectionView() {
+        //hourlycollectionView set up
         hourlyCollectionView.delegate = self
         hourlyCollectionView.dataSource = self
         hourlyCollectionView.register(UINib(nibName: Constants.hourlyCollectionViewCellNibName, bundle: nil), forCellWithReuseIdentifier: Constants.hourlyCollectionViewCellIdentifier)

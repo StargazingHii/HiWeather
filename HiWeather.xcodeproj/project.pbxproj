@@ -26,6 +26,9 @@
 		DC72B21D27E9B6B00087F8ED /* HiWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC72B21C27E9B6B00087F8ED /* HiWeatherTests.swift */; };
 		DC72B22727E9B6B00087F8ED /* HiWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC72B22627E9B6B00087F8ED /* HiWeatherUITests.swift */; };
 		DC72B22927E9B6B00087F8ED /* HiWeatherUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC72B22827E9B6B00087F8ED /* HiWeatherUITestsLaunchTests.swift */; };
+		DC77BF6A2830D0DC005AD116 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC77BF692830D0DC005AD116 /* WeatherData.swift */; };
+		DC77BF6C2830D476005AD116 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC77BF6B2830D476005AD116 /* WeatherManager.swift */; };
+		DC77BF6E2830D7F7005AD116 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC77BF6D2830D7F7005AD116 /* WeatherModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,9 @@
 		DC72B22227E9B6B00087F8ED /* HiWeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HiWeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC72B22627E9B6B00087F8ED /* HiWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiWeatherUITests.swift; sourceTree = "<group>"; };
 		DC72B22827E9B6B00087F8ED /* HiWeatherUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiWeatherUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DC77BF692830D0DC005AD116 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
+		DC77BF6B2830D476005AD116 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
+		DC77BF6D2830D7F7005AD116 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,10 +113,10 @@
 		DC35B54D281F97160051DFF4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DC7272A3282F8CF70074AE71 /* HourlyCell */,
 				DC72B20827E9B6AF0087F8ED /* Main.storyboard */,
 				DC3883FB28213F2000AD8E3C /* SearchCell */,
 				DC3883FC28213F3000AD8E3C /* CurrentWeatherCell */,
+				DC7272A3282F8CF70074AE71 /* HourlyCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -118,6 +124,9 @@
 		DC35B54E281F97240051DFF4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DC77BF692830D0DC005AD116 /* WeatherData.swift */,
+				DC77BF6B2830D476005AD116 /* WeatherManager.swift */,
+				DC77BF6D2830D7F7005AD116 /* WeatherModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -184,6 +193,7 @@
 			children = (
 				DC72B20227E9B6AF0087F8ED /* AppDelegate.swift */,
 				DC72B20427E9B6AF0087F8ED /* SceneDelegate.swift */,
+				DC3883F9282139BB00AD8E3C /* Constants.swift */,
 				DC35B54E281F97240051DFF4 /* Model */,
 				DC35B54D281F97160051DFF4 /* View */,
 				DC35B54C281F97050051DFF4 /* Controller */,
@@ -191,7 +201,6 @@
 				DC72B21027E9B6B00087F8ED /* LaunchScreen.storyboard */,
 				DC72B21327E9B6B00087F8ED /* Info.plist */,
 				DC72B20B27E9B6AF0087F8ED /* HiWeather.xcdatamodeld */,
-				DC3883F9282139BB00AD8E3C /* Constants.swift */,
 			);
 			path = HiWeather;
 			sourceTree = "<group>";
@@ -354,8 +363,11 @@
 				DC7272A6282F8D580074AE71 /* hourlyTableViewCell.swift in Sources */,
 				DC72B20327E9B6AF0087F8ED /* AppDelegate.swift in Sources */,
 				DC72B20527E9B6AF0087F8ED /* SceneDelegate.swift in Sources */,
+				DC77BF6C2830D476005AD116 /* WeatherManager.swift in Sources */,
+				DC77BF6A2830D0DC005AD116 /* WeatherData.swift in Sources */,
 				DC72B20D27E9B6AF0087F8ED /* HiWeather.xcdatamodeld in Sources */,
 				DC3883FF28213F5700AD8E3C /* currentWeatherCell.swift in Sources */,
+				DC77BF6E2830D7F7005AD116 /* WeatherModel.swift in Sources */,
 				DC3883FA282139BB00AD8E3C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

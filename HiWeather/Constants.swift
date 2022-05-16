@@ -2,9 +2,8 @@
 //  Constants.swift
 //  HiWeather
 //
-//  Created by Corder Collie on 2022/05/03.
-//
 
+//cst
 struct Constants {
     
     static let searchCellNibName = "SearchCell"
