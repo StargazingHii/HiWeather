@@ -9,12 +9,21 @@ import Foundation
 
 struct WeatherData: Codable {
     let timezone: String
-    let timezone_offset: Int
+    let timezone_offset: Double
     let current: CurrentWeatherData
+    let hourly: [HourlyWeatherData]
 }
 
 struct CurrentWeatherData: Codable {
-    let dt: Int
+    let dt: Double
+    let temp: Double
+    let humidity: Int
+    let weather: [Weather]
+}
+
+
+struct HourlyWeatherData: Codable {
+    let dt: Double
     let temp: Double
     let humidity: Int
     let weather: [Weather]

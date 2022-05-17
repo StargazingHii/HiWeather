@@ -101,6 +101,9 @@ extension WeatherViewController: UITableViewDataSource, UITableViewDelegate {
 extension WeatherViewController: WeatherManagerDelegate {
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
         self.weatherModel = weather
+        
+        print(weatherModel.hourly![0].dt!) //test 확인 완료
+        print(weatherModel.hourly![0].krTime!) // test 확인 완료
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }

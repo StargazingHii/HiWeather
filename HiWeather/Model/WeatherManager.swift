@@ -39,7 +39,6 @@ struct WeatherManager {
                 if let safeData = data {
                     if let weather = self.parseJSON(safeData) {
                         self.delegate?.didUpdateWeather(self, weather: weather)
-                        print(weather)
                     }
                 }
             }
@@ -53,7 +52,7 @@ struct WeatherManager {
         do {
             let decodeData = try decorder.decode(WeatherData.self, from: weatherData)
             //City Name, City Time
-            let name = decodeData.timezone
+            let cityname = decodeData.timezone
             let time = decodeData.timezone_offset
            
             //Current Weather Data
@@ -65,9 +64,37 @@ struct WeatherManager {
             let id = current.weather[0].id
             let main = current.weather[0].main
             let description = current.weather[0].description
-            print(current)
             
-            let weather = WeatherModel(cityName: name, time: time)
+            let currentWeather = CurrentWeatherModel(dt: dt, temp: temp, humidity: humidity, id: id, main: main, description: description)
+            
+            //Hourly Weather Data
+            let hourly = decodeData.hourly
+            
+            let dt_1 = hourly[0].dt
+            let temp_1 = hourly[0].temp
+            let humidity_1 = hourly[0].humidity
+            let id_1 = hourly[0].weather[0].id
+            let main_1 = hourly[0].weather[0].main
+            let description_1 = hourly[0].weather[0].description
+            
+            //let dt_2 = hourly[1].dt
+            
+            var hourlyWeather = [HourlyWeatherModel]()
+            hourlyWeather.append(HourlyWeatherModel(dt: dt_1, temp: temp_1, humidity: humidity_1,id: id_1, main: main_1, description: description_1))
+//            let date2 = Date(timeIntervalSince1970: dt_1)
+//            print(dt_1)
+//            print(date2)
+//            let testDate: DateFormatter = {
+//                let df = DateFormatter()
+//                df.locale = Locale(identifier: "ko_KR")
+//                df.timeZone = TimeZone(abbreviation: "KST")
+//                df.dateFormat = "HH" // 시간만 나오게 설정.
+//                return df
+//            }()
+//            print(testDate.string(from: date2))
+            
+            
+            let weather = WeatherModel(cityName: cityname, time: time, current: currentWeather,hourly: hourlyWeather)
             
             return weather
         } catch {
